@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapid Typing Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/452e65c997.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <video id="bgVideo" autoplay muted loop src="background.mp4"></video>
+    <img id="gameOver" src="GameOver.jpg" alt="Game Over">
+    <div class="main">
+        <div class="title">Rapid Typing Game</div>
+        <br>
+        <div class="start-area">
+            <button class="start-button"><i id="start-icon" class="far fa-play-circle"></i> Start</button>
+            <br>
+            <br>
+            <button class="trophy-button"><i id="trophy-icon" class="fas fa-trophy"></i> High Scores</button>
+            <div class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <i id="award" class="fas fa-award"></i>
+                    <h3>High Scores</h3>
+                    <ol class="score-list">
+                        <li>Score: <span id="first-high-score"></span></li>
+                        <li>Score: <span id="second-high-score"></span></li>
+                        <li>Score: <span id="third-high-score"></span></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="reset-area">
+            <button class="reset-button"><i class="fas fa-redo"></i>  Reset</button>
+            <button class="exit-button"><i class="fas fa-sign-out-alt"></i>  Exit</button>
+        </div>
+        <br>
+        <div class="play-area">
+            <br>
+            <!-- <div id='well-done'>Well Done!!</div> -->
+            <br>
+            <div class="time-score-div">
+                <div class="time-div">
+                    <i id="hourglass" class="fas fa-hourglass-start fa-spin"></i>
+                    <h3 id="time-left"></h3>         
+                </div>
+                <div class="empty-space">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="score-div">
+                    <i id="score-star" class="fas fa-star fa-spin"></i>
+                    <h3 id="score"></h3>                    
+                </div>  
+            </div>
+            <h3>Type this word:</h3>
+            <div class="word"></div>
+            <br>
+            <input type="text" name="user-input" id="user-input">
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
