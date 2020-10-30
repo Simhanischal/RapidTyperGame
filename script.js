@@ -41,6 +41,8 @@ function addScoreToStorage(currentScore){
 }
 
 function getHighScores(){
+    if(localStorage.getItem('scores') === null)
+        localStorage.setItem('scores',JSON.stringify([0,0,0])); //initialize an array with 3 zeros for 3 high scores for first time user
     let scores = JSON.parse(localStorage.getItem('scores'));
     scores.sort((a,b)=>b-a); //sort the scores array in descending order
     //add the top 3 scores in the array in high scores area
