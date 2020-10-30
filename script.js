@@ -69,7 +69,7 @@ function timer(){
 
 function checkWord(event){
     //if the entered word is equal to displayed word 
-    if(word.innerHTML === event.target.value){
+    if(word.innerHTML === event.target.value.toLowerCase()){
         event.target.value = '';
         score.innerHTML = parseInt(score.innerHTML) + 3; //increment the score by 3
         timeLeft.innerHTML = parseInt(timeLeft.innerHTML) + 5; //increment the time by 5
