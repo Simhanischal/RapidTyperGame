@@ -27,6 +27,11 @@ function reset(){
     start(); //restart the game
 }
 
+function exit(){
+    userInput.value = '';
+    time = 0;
+}
+
 function generateRandomWord(){
     let random = Math.floor(Math.random()*words.length);
     document.querySelector('.word').innerHTML = words[random]; //display a random word from the list
@@ -124,7 +129,7 @@ let closeModalButton = document.querySelector('.close');
 
 startButton.addEventListener("click",start);
 resetButton.addEventListener("click",reset);
-exitButton.addEventListener("click",()=>{time=0;});
+exitButton.addEventListener("click",exit);
 userInput.addEventListener("input",checkWord);
 trophyButton.addEventListener("click",openModal);
 closeModalButton.addEventListener("click",closeModal);
