@@ -3,7 +3,7 @@ function start(){
     startArea.style.display = 'none'; //make the start area(start button and high scores button) invisible
     resetArea.style.display = 'block'; //make the reset area(reset button and exit button) visible
     playArea.style.display = 'block'; 
-    time = 7; //set the time to 7s
+    time = 5; //set the time to 5s
     timer(); //start the timer
     generateRandomWord(); //generate a random word
     document.querySelector('#score').innerHTML = 0; //set the score to 0
@@ -72,8 +72,8 @@ function checkWord(event){
     if(word.innerHTML === event.target.value.toLowerCase()){
         event.target.value = '';
         score.innerHTML = parseInt(score.innerHTML) + 3; //increment the score by 3
-        timeLeft.innerHTML = parseInt(timeLeft.innerHTML) + 5; //increment the time by 5
-        time += 5;
+        timeLeft.innerHTML = parseInt(timeLeft.innerHTML) + 3; //increment the time by 3s
+        time += 3;
         generateRandomWord(); //generate a new random word
     }
 }
