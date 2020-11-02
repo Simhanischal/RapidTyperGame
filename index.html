@@ -21,13 +21,26 @@
             <div class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <i id="award" class="fas fa-award"></i>
-                    <h3>High Scores</h3>
-                    <ol class="score-list">
-                        <li>Score: <span id="first-high-score"></span></li>
-                        <li>Score: <span id="second-high-score"></span></li>
-                        <li>Score: <span id="third-high-score"></span></li>
-                    </ol>
+                    <div class="start-modal">
+                        <label for="difficulty">Difficulty</label>
+                        <br>
+                        <select name="" id="difficulty">
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                        <br>
+                        <button class="play-button">Let's Play!</button>
+                    </div>
+                    <div class="scores-modal">
+                        <i id="award" class="fas fa-award"></i>
+                        <h3>High Scores</h3>
+                        <ol class="score-list">
+                            <li>Score: <span id="first-high-score"></span></li>
+                            <li>Score: <span id="second-high-score"></span></li>
+                            <li>Score: <span id="third-high-score"></span></li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </div>

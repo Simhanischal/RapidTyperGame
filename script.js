@@ -1,4 +1,17 @@
 function start(){
+    openModal();
+    scoresModal.style.display = 'none';
+    startModal.style.display = 'block';
+}
+
+function openScores(){
+    getHighScores(); //show the high scores
+    openModal();
+    startModal.style.display = 'none';
+    scoresModal.style.display = 'block';
+}
+
+function play(){
     userInput.value = ''; //clearing the input if any from previous session
     bgVideo.style.display = 'block'; //make the background video visible
     startArea.style.display = 'none'; //make the start area(start button and high scores button) invisible
@@ -85,7 +98,6 @@ function checkWord(event){
 }
 
 function openModal(){
-    getHighScores(); //show the high scores
     modal.style.display = 'block';
 }
 
@@ -125,13 +137,16 @@ let bgVideo = document.querySelector('#bgVideo');
 let gameOver = document.querySelector('#gameOver');
 let wellDone = document.querySelector('#well-done');
 let modal = document.querySelector('.modal');
+let startModal = document.querySelector('.start-modal');
+let scoresModal = document.querySelector('.scores-modal');
 let closeModalButton = document.querySelector('.close');
-
+let playButton = document.querySelector('.play-button');
 
 startButton.addEventListener("click",start);
+playButton.addEventListener("click",play);
 resetButton.addEventListener("click",reset);
 exitButton.addEventListener("click",exit);
 userInput.addEventListener("input",checkWord);
-trophyButton.addEventListener("click",openModal);
+trophyButton.addEventListener("click",openScores);
 closeModalButton.addEventListener("click",closeModal);
 window.addEventListener("click",closeModal);
