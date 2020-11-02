@@ -1,4 +1,5 @@
 function start(){
+    userInput.value = ''; //clearing the input if any from previous session
     bgVideo.style.display = 'block'; //make the background video visible
     startArea.style.display = 'none'; //make the start area(start button and high scores button) invisible
     resetArea.style.display = 'block'; //make the reset area(reset button and exit button) visible
@@ -134,17 +135,3 @@ userInput.addEventListener("input",checkWord);
 trophyButton.addEventListener("click",openModal);
 closeModalButton.addEventListener("click",closeModal);
 window.addEventListener("click",closeModal);
-
-
-
-
-
-
-
-
-
-
-
-
-
-//document.onload(()=>alert('hi'));
