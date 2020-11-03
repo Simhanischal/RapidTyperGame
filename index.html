@@ -18,6 +18,9 @@
             <br>
             <br>
             <button class="trophy-button"><i id="trophy-icon" class="fas fa-trophy"></i> High Scores</button>
+            <br>
+            <br>
+            <button class="how-to-button"><i id="question-icon" class="fas fa-question"></i> How to Play</button>
             <div class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
@@ -30,16 +33,38 @@
                             <option value="hard">Hard</option>
                         </select>
                         <br>
-                        <button class="play-button">Let's Play!</button>
+                        <button class="play-button">Play <i class="fas fa-arrow-right"></i></button>
                     </div>
                     <div class="scores-modal">
-                        <i id="award" class="fas fa-award"></i>
-                        <h3>High Scores</h3>
+                        <span>High Scores</span> <i id="award" class="fas fa-award"></i>
+                        <br>
+                        <br>
+                        <div id="score-difficulty">
+                            <button id="easy-score">Easy</button>
+                            <button id="medium-score">Medium</button>
+                            <button id="hard-score">Hard</button>
+                        </div>
                         <ol class="score-list">
                             <li>Score: <span id="first-high-score"></span></li>
                             <li>Score: <span id="second-high-score"></span></li>
                             <li>Score: <span id="third-high-score"></span></li>
                         </ol>
+                    </div>
+                    <div class="how-to-modal">
+                        <p id="how-to-paragraph">
+                            On starting the game, you will be given a random word and you will have 5 seconds
+                            to type the word correctly. The game ends when the time in timer reaches 0. Upon typing the word correcctly, a certain amount of time
+                            and score points will be added based on the difficulty as shown  below:
+                        </p>
+                        <div id="how-to-difficulty">
+                            <button id="easy-how-to">Easy</button>
+                            <button id="medium-how-to">Medium</button>
+                            <button id="hard-how-to">Hard</button>
+                        </div>
+                        <ul class="how-to-list">
+                            <li>Score: <span id="how-to-score"></span></li>
+                            <li>Time: <span id="how-to-time"></span></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -50,6 +75,8 @@
         </div>
         <br>
         <div class="play-area">
+            <span>Difficulty: </span> <span id="playDifficulty"></span> 
+            <br>
             <br>
             <div class="time-score-div">
                 <div class="time-div">
@@ -64,7 +91,8 @@
                     <h3 id="score"></h3>                    
                 </div>  
             </div>
-            <h3>Type this word:</h3>
+            <br>
+            <span>Type this word:</span>
             <div class="word"></div>
             <input type="text" name="user-input" id="user-input">
         </div>
