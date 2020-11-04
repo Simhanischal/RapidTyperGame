@@ -200,6 +200,10 @@ body{
     outline: none;
 }
 
+#score-difficulty > button:hover, #how-to-difficulty > button:hover{
+    color: #ff8000;
+}
+
 #score-difficulty > #easy-score, #how-to-difficulty > #easy-how-to{
     border-bottom: 2px solid #ff8000;
 }
