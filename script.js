@@ -30,7 +30,6 @@ function openHowToPlay(){
 function play(){
     //let selectedDifficulty = difficulty.value;
     playScreen.style.position = 'static'; //restore the play screen to center if it had been moved to top on mobile device
-    playScreen.style.top = '0';
     modal.style.display = 'none'; //close the start modal
     userInput.value = ''; //clearing the input if any from previous session
     bgVideo.style.display = 'block'; //make the background video visible
