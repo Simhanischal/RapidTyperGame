@@ -29,12 +29,15 @@ function openHowToPlay(){
 
 function play(){
     //let selectedDifficulty = difficulty.value;
+    playScreen.style.position = 'static'; //restore the play screen to center if it had been moved to top on mobile device
+    playScreen.style.top = '0';
     modal.style.display = 'none'; //close the start modal
     userInput.value = ''; //clearing the input if any from previous session
     bgVideo.style.display = 'block'; //make the background video visible
     startArea.style.display = 'none'; //make the start area(start button and high scores button) invisible
     resetArea.style.display = 'block'; //make the reset area(reset button and exit button) visible
-    playArea.style.display = 'block';
+    playArea.style.display = 'block'; //make the play area visible
+    document.querySelector('.title').style.display = 'none'; //make the title invisible
     document.querySelector('#playDifficulty').innerHTML = difficulty.value.toUpperCase(); //to display in the play area the difficulty level selected 
     time = 5; //set the time to 5s
     timer(); //start the timer
@@ -50,7 +53,7 @@ function stop(){
     startArea.style.display = 'block'; //enable the start area
     resetArea.style.display = 'none'; //enable the reset area
     playArea.style.display = 'none'; //disable the play area
-    
+    document.querySelector('.title').style.display = 'block'; //enable the title
 }
 
 function reset(){
@@ -63,6 +66,15 @@ function reset(){
 function exit(){
     userInput.value = '';
     time = 0;
+}
+
+function changeStyleForMobile(){
+    if(screen.width <= 768){
+        playScreen.style.position = 'absolute';
+        playScreen.style.top = '0';
+        //playScreen.style.margin = 'auto';
+        //playScreen.style.textAlign = 'center';
+    }
 }
 
 function generateRandomWord(){
@@ -169,6 +181,7 @@ let time;
 let setTimer;
 let body = document.getElementsByTagName('body');
 let startArea = document.querySelector('.start-area');
+let playScreen = document.querySelector('.play-screen');
 let resetArea = document.querySelector('.reset-area');
 let playArea = document.querySelector('.play-area');
 let startButton = document.querySelector('.start-button');
@@ -202,6 +215,7 @@ playButton.addEventListener("click",play);
 resetButton.addEventListener("click",reset);
 exitButton.addEventListener("click",exit);
 userInput.addEventListener("input",checkWord);
+userInput.addEventListener("focus",changeStyleForMobile);
 trophyButton.addEventListener("click",openScores);
 howToButton.addEventListener("click",openHowToPlay);
 easyScoresButton.addEventListener("click",()=>{
