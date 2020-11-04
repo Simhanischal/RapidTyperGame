@@ -1,5 +1,12 @@
 # RapidTyperGame
-A vanilla JS typing game where a random word has to be typed within certain time and for each correct word you get extra time and more words to type. For each correct word, a certain amount of score is added.
+On starting the game, you will be given a random word and you will have 5 seconds
+to type the word correctly. The game ends when the time in timer reaches 0. Upon typing the word correcctly, a certain amount of time
+and score points will be added based on the difficulty as shown  below:
+
+###### Easy: Score + 5, Time + 5
+###### Medium: Score + 3, Time + 3
+###### Hard: Score + 1, Time + 1
+
 
 ## Technologies Used
 HTML, CSS and Javascript.
