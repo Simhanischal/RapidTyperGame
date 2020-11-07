@@ -198,6 +198,7 @@ body{
     font-size: 15px;
     border: none;
     outline: none;
+    cursor: pointer;
 }
 
 #score-difficulty > button:hover, #how-to-difficulty > button:hover{
