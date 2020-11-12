@@ -52,7 +52,6 @@ function openHowToPlay(){
  * This function displays the play area, hides the start area, starts the timer, generates a random word and initializes time and score to 0.
  */
 function play(){
-    console.log(difficulty.value);
     playScreen.style.position = 'static'; //restore the play screen to center if it had been moved to top on mobile device
     modal.style.display = 'none'; //close the start modal
     userInput.value = ''; //clearing the input if any from previous session
@@ -92,7 +91,6 @@ function stop(){
  * This function adds the score to local storage, clears the timer and restarts the game.
  */
 function reset(){
-    console.log('reset clicked');
     addScoreToStorage(score.innerHTML,difficulty.value); //add the score to local storage
     time = 0; //reset the time
     clearInterval(setTimer); //clear the timer
@@ -120,8 +118,6 @@ function changeStyleForMobile(){
     if(screen.width <= 768){
         playScreen.style.position = 'absolute';
         playScreen.style.top = '0';
-        //playScreen.style.margin = 'auto';
-        //playScreen.style.textAlign = 'center';
     }
 }
 
