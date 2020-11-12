@@ -1,3 +1,9 @@
+/**
+ * start takes no arguments.
+ * There is no return value in all cases.
+ * This function is fired when the user clicks on "Start" button in the home page.
+ * This function opens a modal to choose game difficulty
+ */
 function start(){
     openModal();
     scoresModal.style.display = 'none';
@@ -5,6 +11,12 @@ function start(){
     startModal.style.display = 'block';
 }
 
+/**
+ * openScores takes no arguments.
+ * There is no return value in all cases.
+ * This function is fired when the user clicks on "High Scores" button in the home page.
+ * This function opens a modal to where the user can view their high scores in all the 3 difficulty levels.
+ */
 function openScores(){
     getHighScores('easy'); //show the high scores
     easyScoresButton.style.borderBottom = '2px solid #ff8000';
@@ -16,6 +28,12 @@ function openScores(){
     scoresModal.style.display = 'block';
 }
 
+/**
+ * openHowToPlay takes no arguments.
+ * There is no return value in all cases.
+ * This function is fired when the user clicks on "How to Play" button in the home page.
+ * This function opens a modal to view the guide to playing a game.
+ */
 function openHowToPlay(){
     getHowtoPlay('easy'); //show the how to play section
     easyHowToButton.style.borderBottom = '2px solid #ff8000';
@@ -27,8 +45,13 @@ function openHowToPlay(){
     howToModal.style.display = 'block';
 }
 
+/**
+ * play takes no arguments.
+ * There is no return value in all cases.
+ * This function is fired when the user clicks on "Play" button in the start modal of home page.
+ * This function displays the play area, hides the start area, starts the timer, generates a random word and initializes time and score to 0.
+ */
 function play(){
-    //let selectedDifficulty = difficulty.value;
     playScreen.style.position = 'static'; //restore the play screen to center if it had been moved to top on mobile device
     modal.style.display = 'none'; //close the start modal
     userInput.value = ''; //clearing the input if any from previous session
@@ -45,6 +68,12 @@ function play(){
     document.querySelector('#time-left').innerHTML = time;
 }
 
+/**
+ * stop takes no arguments.
+ * There is no return value in all cases.
+ * This function is triggered wheen the game timer reaches 0.
+ * This function adds the score to local storage, exits the game area and brings back the start area.
+ */
 function stop(){
     addScoreToStorage(score.innerHTML,difficulty.value); //add the score to local storage
     time = 0; // reset the time
@@ -55,32 +84,60 @@ function stop(){
     document.querySelector('.title').style.display = 'block'; //enable the title
 }
 
+/**
+ * reset takes no arguments.
+ * There is no return value in all cases.
+ * This function is triggered wheen the user clicks on "Reset" button.
+ * This function adds the score to local storage, clears the timer and restarts the game.
+ */
 function reset(){
-    addScoreToStorage(score.innerHTML); //add the score to local storage
-    clearInterval(setTimer); //clear the timer
+    addScoreToStorage(score.innerHTML,difficulty.value); //add the score to local storage
     time = 0; //reset the time
-    start(); //restart the game
+    clearInterval(setTimer); //clear the timer
+    play(); //restart the game
 }
 
+/**
+ * exit takes no arguments.
+ * There is no return value in all cases.
+ * This function is triggered wheen the user clicks on "Exit" button.
+ * This function clears the user input, reset the timer, exits out of the play area and brings back start area.
+ */
 function exit(){
     userInput.value = '';
     time = 0;
 }
 
+/**
+ * changeStyleForMobile takes no arguments.
+ * There is no return value in all cases.
+ * This function is fired when the user opens the game in a mobile device.
+ * This function pushes the play area to the top so that mobile keyboard doesn't mask the play area.
+ */
 function changeStyleForMobile(){
     if(screen.width <= 768){
         playScreen.style.position = 'absolute';
         playScreen.style.top = '0';
-        //playScreen.style.margin = 'auto';
-        //playScreen.style.textAlign = 'center';
     }
 }
 
+/**
+ * generateRandomWord takes no arguments.
+ * There is no return value in all cases.
+ * This function picks up a random word from the set of words stored in "words" variable.
+ */
 function generateRandomWord(){
     let random = Math.floor(Math.random()*words.length);
     document.querySelector('.word').innerHTML = words[random]; //display a random word from the list
 }
 
+/**
+ * addScoreToStorage takes "currentScore" and "difficulty" as arguments.
+ * There is no return value in all cases.
+ * @param {string} currentScore
+ * @param {string} difficulty
+ * This function adds the score to local storage in the acceptable format.
+ */
 function addScoreToStorage(currentScore,difficulty){
     if(localStorage.getItem(`scores_${difficulty}`) === null) //this is for a first time user to initialze the scores array
         localStorage.setItem(`scores_${difficulty}`,'[]');
@@ -89,6 +146,12 @@ function addScoreToStorage(currentScore,difficulty){
     localStorage.setItem(`scores_${difficulty}`,JSON.stringify(scores)); //add the score to local storage
 }
 
+/**
+ * addScoreToStorage takes "difficulty" as argument.
+ * There is no return value in all cases.
+ * @param {string} difficulty
+ * This function gets the high scores of an user from localStorage depending on the difficulty requested.
+ */
 function getHighScores(difficulty){
     if(localStorage.getItem(`scores_${difficulty}`) === null)
         localStorage.setItem(`scores_${difficulty}`,JSON.stringify([0,0,0])); //initialize an array with 3 zeros for 3 high scores for first time user
@@ -100,6 +163,12 @@ function getHighScores(difficulty){
     document.querySelector('#third-high-score').innerHTML = scores[2];
 }
 
+/**
+ * addScoreToStorage takes "difficulty" as argument.
+ * There is no return value in all cases.
+ * @param {string} difficulty
+ * This function gets the score and time increments depending on the difficulty requested.
+ */
 function getHowtoPlay(difficulty){
     let increment;
     if(difficulty === 'medium'){
@@ -115,6 +184,12 @@ function getHowtoPlay(difficulty){
     document.querySelector('#how-to-time').innerHTML = increment;
 }
 
+/**
+ * timerInterval takes no arguments.
+ * There is no return value in all cases.
+ * This function is triggered every second when the game is being played.
+ * This function updates the time remaining in the game and if the time reaches 0, stops the game
+ */
 function timerInterval(){
     if(time === 0){
         clearInterval(setTimer); //clear the interval
@@ -127,10 +202,21 @@ function timerInterval(){
     }
 }
 
+/**
+ * openModal takes no arguments.
+ * There is no return value in all cases.
+ * This function sets a timer interval for every second which is used as a timer in the game.
+ */
 function timer(){
     setTimer = setInterval(timerInterval,1000);
 }
 
+/**
+ * addScoreToStorage takes "event"(JavaScript event) as argument.
+ * There is no return value in all cases.
+ * @param {object} event
+ * This function checks the word entered by user with the selected word and if it matches, increments the time and score according to the difficlty level.
+ */
 function checkWord(event){
     //if the entered word is equal to displayed word 
     if(word.innerHTML === event.target.value.toLowerCase()){
@@ -154,15 +240,27 @@ function checkWord(event){
     }
 }
 
+/**
+ * openModal takes no arguments.
+ * There is no return value in all cases.
+ * This function displays a modal to choose game difficulty or to view high scores depending on user choice.
+ */
 function openModal(){
     modal.style.display = 'block';
 }
 
+/**
+ * closeModal takes no arguments.
+ * There is no return value in all cases.
+ * This function is triggered wheen the user clicks on "Close" icon in modal or anywhere outside the modal area.
+ * This function closes the opened modal.
+ */
 function closeModal(event){
     if(event.target === modal || event.target === closeModalButton)
         modal.style.display = 'none';
 }
 
+//set of words to give out randomly in the play area
 let words = [
     'horseradish','bellhop','lifelike','hookup','everything',
     'earthquake','blackberries','underarm','turnoff','keyway',
@@ -178,36 +276,34 @@ let words = [
 
 let time;
 let setTimer;
-let body = document.getElementsByTagName('body');
-let startArea = document.querySelector('.start-area');
-let playScreen = document.querySelector('.play-screen');
-let resetArea = document.querySelector('.reset-area');
-let playArea = document.querySelector('.play-area');
-let startButton = document.querySelector('.start-button');
-let resetButton = document.querySelector('.reset-button');
-let exitButton = document.querySelector('.exit-button');
-let trophyButton = document.querySelector('.trophy-button');
-let howToButton = document.querySelector('.how-to-button');
-let userInput = document.querySelector('#user-input');
-let word = document.querySelector('.word');
-let timeLeft = document.querySelector('#time-left');
-let score = document.querySelector('#score');
-let bgVideo = document.querySelector('#bgVideo');
-let gameOver = document.querySelector('#gameOver');
-let wellDone = document.querySelector('#well-done');
-let modal = document.querySelector('.modal');
-let startModal = document.querySelector('.start-modal');
-let scoresModal = document.querySelector('.scores-modal');
-let howToModal = document.querySelector('.how-to-modal');
-let closeModalButton = document.querySelector('.close');
-let playButton = document.querySelector('.play-button');
-let difficulty = document.querySelector('#difficulty');
-let easyScoresButton = document.querySelector('#easy-score');
-let mediumScoresButton = document.querySelector('#medium-score');
-let hardScoresButton = document.querySelector('#hard-score');
-let easyHowToButton = document.querySelector('#easy-how-to');
-let mediumHowToButton = document.querySelector('#medium-how-to');
-let hardHowToButton = document.querySelector('#hard-how-to');
+const body = document.getElementsByTagName('body');
+const startArea = document.querySelector('.start-area');
+const playScreen = document.querySelector('.play-screen');
+const resetArea = document.querySelector('.reset-area');
+const playArea = document.querySelector('.play-area');
+const startButton = document.querySelector('.start-button');
+const resetButton = document.querySelector('.reset-button');
+const exitButton = document.querySelector('.exit-button');
+const trophyButton = document.querySelector('.trophy-button');
+const howToButton = document.querySelector('.how-to-button');
+const userInput = document.querySelector('#user-input');
+const word = document.querySelector('.word');
+const timeLeft = document.querySelector('#time-left');
+const score = document.querySelector('#score');
+const bgVideo = document.querySelector('#bgVideo');
+const modal = document.querySelector('.modal');
+const startModal = document.querySelector('.start-modal');
+const scoresModal = document.querySelector('.scores-modal');
+const howToModal = document.querySelector('.how-to-modal');
+const closeModalButton = document.querySelector('.close');
+const playButton = document.querySelector('.play-button');
+const difficulty = document.querySelector('#difficulty');
+const easyScoresButton = document.querySelector('#easy-score');
+const mediumScoresButton = document.querySelector('#medium-score');
+const hardScoresButton = document.querySelector('#hard-score');
+const easyHowToButton = document.querySelector('#easy-how-to');
+const mediumHowToButton = document.querySelector('#medium-how-to');
+const hardHowToButton = document.querySelector('#hard-how-to');
 
 startButton.addEventListener("click",start);
 playButton.addEventListener("click",play);
