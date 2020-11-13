@@ -11,6 +11,8 @@ and score points will be added based on the difficulty as shown  below:
 ## Technologies Used
 HTML, CSS and Javascript.
 
+###### Note: window.localStorage is used to store scores which kind of acts like a pseudo database!
+
 ## Contribution
 ##### 1. Fork the repository.
 ##### 2. Clone the repo to your local environment using git clone.
