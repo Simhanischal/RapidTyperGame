@@ -55,7 +55,7 @@ function play(){
     playScreen.style.position = 'static'; //restore the play screen to center if it had been moved to top on mobile device
     modal.style.display = 'none'; //close the start modal
     userInput.value = ''; //clearing the input if any from previous session
-    bgVideo.style.display = 'block'; //make the background video visible
+    document.body.style.backgroundImage = "url('./public/RapidTyperBg.jpg')"; //change the background image
     startArea.style.display = 'none'; //make the start area(start button and high scores button) invisible
     resetArea.style.display = 'block'; //make the reset area(reset button and exit button) visible
     playArea.style.display = 'block'; //make the play area visible
@@ -77,7 +77,7 @@ function play(){
 function stop(){
     addScoreToStorage(score.innerHTML,difficulty.value); //add the score to local storage
     time = 0; // reset the time
-    bgVideo.style.display = 'none'; //disable the video
+    document.body.style.backgroundImage = "url('./public/home.jpg')"; //change the background image
     startArea.style.display = 'block'; //enable the start area
     resetArea.style.display = 'none'; //enable the reset area
     playArea.style.display = 'none'; //disable the play area
@@ -290,7 +290,7 @@ const userInput = document.querySelector('#user-input');
 const word = document.querySelector('.word');
 const timeLeft = document.querySelector('#time-left');
 const score = document.querySelector('#score');
-const bgVideo = document.querySelector('#bgVideo');
+// const bgVideo = document.querySelector('#bgVideo');
 const modal = document.querySelector('.modal');
 const startModal = document.querySelector('.start-modal');
 const scoresModal = document.querySelector('.scores-modal');
