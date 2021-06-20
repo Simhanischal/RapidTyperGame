@@ -55,7 +55,7 @@ function play(){
     playScreen.style.position = 'static'; //restore the play screen to center if it had been moved to top on mobile device
     modal.style.display = 'none'; //close the start modal
     userInput.value = ''; //clearing the input if any from previous session
-    document.body.style.backgroundImage = "url('./public/RapidTyperBg.jpg')"; //change the background image
+    body.style.backgroundImage = "url('./public/RapidTyperBg.jpg')"; //change the background image
     startArea.style.display = 'none'; //make the start area(start button and high scores button) invisible
     resetArea.style.display = 'block'; //make the reset area(reset button and exit button) visible
     playArea.style.display = 'block'; //make the play area visible
@@ -77,7 +77,7 @@ function play(){
 function stop(){
     addScoreToStorage(score.innerHTML,difficulty.value); //add the score to local storage
     time = 0; // reset the time
-    document.body.style.backgroundImage = "url('./public/home.jpg')"; //change the background image
+    body.style.backgroundImage = "url('./public/home.jpg')"; //change the background image
     startArea.style.display = 'block'; //enable the start area
     resetArea.style.display = 'none'; //enable the reset area
     playArea.style.display = 'none'; //disable the play area
