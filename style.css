@@ -16,12 +16,10 @@ body{
 }
 
 #bgVideo{
-    position: fixed;
-    min-width: 100%;
-    min-height: 100%;
-    right: 0;
-    bottom: 0;
-    display: none;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /* #gameOver{
