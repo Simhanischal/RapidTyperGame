@@ -277,7 +277,7 @@ let words = [
 let time;
 let setTimer;
 const body = document.querySelector('body');
-console.log(body);
+// console.log(body);
 const startArea = document.querySelector('.start-area');
 const playScreen = document.querySelector('.play-screen');
 const resetArea = document.querySelector('.reset-area');
